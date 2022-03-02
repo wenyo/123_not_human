@@ -17,14 +17,22 @@
 
     h1 {
         text-align: center;
-        border-bottom: 1px solid gray;
+        border-bottom: 1px solid #ccc;
         padding-bottom: 5px;
+        color: grey;
     }
 
     .flex {
         display: flex;
         align-items: center;
+        margin: 40px 0;
     }
+
+    .justify-content {
+        justify-content: center;
+
+    }
+
 
     .random-btn {
         padding: 20px;
@@ -34,6 +42,12 @@
         font-size: 36px;
         margin-left: 10px;
     }
+
+    .score th {
+        width: 100px;
+        padding: 4px 0;
+        border: 1px solid gray;
+    }
 </style>
 
 <body>
@@ -42,6 +56,23 @@
         <div class="flex">
             <button class="random-btn">隨機選題</button>
             <span class="topic">
+        </div>
+        <div class="score">
+            <h1>計分表</h1>
+            <div class="flex justify-content">
+                <table>
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>A</th>
+                            <th>B</th>
+                            <th>C</th>
+                            <th>D</th>
+                            <th>E</th>
+                        </tr>
+                    </thead>
+                </table>
+            </div>
         </div>
     </div>
 </body>

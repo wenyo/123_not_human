@@ -5,13 +5,16 @@ let scoreAry = Array.from({ length: TEAM_COUNT }, () => {
     return Array.from({ length: ROUND_COUNT }, () => SCORE_ZERO);
 });
 
-console.log(scoreAry);
-
 window.onload = () => {
     const randomBtn = document.querySelector(".random-btn");
     randomBtn.addEventListener("click", topicGet);
-    scoreFormSet();
+    scoreBuild();
 };
+
+function scoreBuild() {
+    scoreFormSet();
+    scoreInputListener();
+}
 
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
@@ -37,11 +40,11 @@ function scoreFormSet() {
         let tbodyTmp = "";
         let scoreTotalTmp = 0;
         thead += `<th>Round${parseInt(teamIdx) + 1}</th>`;
-        for (const scoreIdx in scoreAry[teamIdx]) {
-            const score = scoreAry[teamIdx][scoreIdx];
+        for (const roundIdx in scoreAry[teamIdx]) {
+            const score = scoreAry[teamIdx][roundIdx];
             scoreTotalTmp += score;
-            tbodyTmp += `<td class="score-item" data-team="${teamIdx}" data-score="${scoreIdx}" >
-                            <input type="number" value="${score}" />
+            tbodyTmp += `<td data-team="${teamIdx}" data-round="${roundIdx}" >
+                            <input class="score-input" type="number" value="${score}" />
                         </td>`;
         }
 
@@ -64,7 +67,23 @@ function scoreFormSet() {
     scoreTbody.innerHTML = tbody;
 }
 
-function scoreAdd() {}
+function scoreInputListener() {
+    const scoreInputs = document.querySelectorAll(".score-input");
+    for (const scoreInput of scoreInputs) {
+        scoreInput.addEventListener("change", function () {
+            scoreAdd(this);
+            scoreBuild();
+        });
+    }
+}
+
+function scoreAdd(self) {
+    const thisScore = self.value;
+    const parentElement = self.parentElement;
+    const teamIdx = parentElement.dataset.team;
+    const roundIdx = parentElement.dataset.round;
+    scoreAry[teamIdx][roundIdx] = parseInt(thisScore);
+}
 
 function scoreFromLocalGet() {}
 

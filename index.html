@@ -11,7 +11,8 @@
 </head>
 
 <style>
-    body {
+    body,
+    h1 {
         margin: 0;
         padding: 0;
     }
@@ -24,11 +25,19 @@
         flex-direction: column;
     }
 
-    h1 {
+    .title {
         text-align: center;
         border-bottom: 1px solid #ccc;
         padding-bottom: 5px;
         color: grey;
+        position: relative;
+    }
+
+    .title button {
+        position: absolute;
+        right: 10px;
+        top: 50%;
+        transform: translateY(-50%);
     }
 
     .flex {
@@ -54,6 +63,7 @@
     .score {
         width: 100%;
         border-collapse: collapse;
+        text-align: center;
         border-spacing: 0;
     }
 
@@ -68,9 +78,20 @@
         color: gray;
     }
 
-    .score td {
+    .score td:first-child {
         padding: 6px 4px;
+    }
+
+    .score input {
         text-align: center;
+        border: unset;
+        padding: 0;
+        padding: 6px 0;
+        width: 100%;
+    }
+
+    .score input:focus {
+        outline: 1px solid #bb0303;
     }
 
     .score tr:not(:last-child) td {
@@ -95,24 +116,22 @@
         font-weight: bolder;
         color: #bb0303;
     }
-
-
-    .score input {
-        border: unset;
-        width: 20px;
-        text-align: center;
-    }
 </style>
 
 <body>
     <div id="wrap">
-        <h1>123 木頭人</h1>
+        <div class="title">
+            <h1>123 木頭人</h1>
+        </div>
         <div class="flex">
             <button class="random-btn">隨機選題</button>
             <span class="topic">
         </div>
         <div class="score-area">
-            <h1>計分表</h1>
+            <div class="title">
+                <h1>計分表</h1>
+                <button class="clear-data">clear</button>
+            </div>
             <div class="flex justify-content">
                 <table class="score">
                     <thead></thead>

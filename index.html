@@ -11,7 +11,7 @@
 </head>
 
 <style>
-    .wrap {
+    #wrap {
         margin: 20px;
     }
 
@@ -43,34 +43,42 @@
         margin-left: 10px;
     }
 
-    .score th {
+    .score-area th {
         width: 100px;
         padding: 4px 0;
-        border: 1px solid gray;
+        border-bottom: 1px solid gray;
+    }
+
+    .score {
+        border-collapse: collapse;
+        border-spacing: 0;
+    }
+
+    .score td {
+        padding: 10px;
+        text-align: center;
+    }
+
+    .score input {
+        border: unset;
+        width: 50px;
+        text-align: center;
     }
 </style>
 
 <body>
-    <div class="wrap">
+    <div id="wrap">
         <h1>123 木頭人</h1>
         <div class="flex">
             <button class="random-btn">隨機選題</button>
             <span class="topic">
         </div>
-        <div class="score">
+        <div class="score-area">
             <h1>計分表</h1>
             <div class="flex justify-content">
-                <table>
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>A</th>
-                            <th>B</th>
-                            <th>C</th>
-                            <th>D</th>
-                            <th>E</th>
-                        </tr>
-                    </thead>
+                <table class="score">
+                    <thead></thead>
+                    <tbody></tbody>
                 </table>
             </div>
         </div>

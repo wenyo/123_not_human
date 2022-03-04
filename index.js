@@ -32,7 +32,6 @@ function scoreFormSet() {
     const scoreTbody = document.querySelector(".score tbody");
     let thead = "";
     let tbody = "";
-    let totalScore = "";
 
     for (const teamIdx in scoreAry) {
         let tbodyTmp = "";

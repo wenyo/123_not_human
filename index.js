@@ -36,16 +36,17 @@ function scoreFormSet() {
     for (const teamIdx in scoreAry) {
         let tbodyTmp = "";
         let scoreTotalTmp = 0;
-        thead += `<th>Team${parseInt(teamIdx) + 1}</th>`;
-        for (const score of scoreAry[teamIdx]) {
+        thead += `<th>Round${parseInt(teamIdx) + 1}</th>`;
+        for (const scoreIdx in scoreAry[teamIdx]) {
+            const score = scoreAry[teamIdx][scoreIdx];
             scoreTotalTmp += score;
-            tbodyTmp += `<td>
+            tbodyTmp += `<td class="score-item" data-team="${teamIdx}" data-score="${scoreIdx}" >
                             <input type="number" value="${score}" />
                         </td>`;
         }
 
         tbody += `<tr>
-                    <td>Round${parseInt(teamIdx) + 1}</td>
+                    <td>Team${parseInt(teamIdx) + 1}</td>
                     ${tbodyTmp}
                     <td>${scoreTotalTmp}</td>
                 </tr>`;
@@ -63,10 +64,10 @@ function scoreFormSet() {
     scoreTbody.innerHTML = tbody;
 }
 
+function scoreAdd() {}
+
 function scoreFromLocalGet() {}
 
 function scoreFromLocalSave() {}
 
 function scoreFromLocalClear() {}
-
-function scoreAdd() {}

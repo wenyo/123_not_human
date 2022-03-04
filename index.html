@@ -11,8 +11,13 @@
 </head>
 
 <style>
+    body {
+        margin: 0;
+        padding: 0;
+    }
+
     #wrap {
-        margin: 20px;
+        margin: 10px;
     }
 
     h1 {
@@ -23,6 +28,7 @@
     }
 
     .flex {
+        width: 100%;
         display: flex;
         align-items: center;
         margin: 40px 0;
@@ -33,35 +39,63 @@
 
     }
 
-
     .random-btn {
-        padding: 20px;
+        margin: 20px 20px 20px 0;
     }
 
     .topic {
-        font-size: 36px;
-        margin-left: 10px;
-    }
-
-    .score-area th {
-        width: 100px;
-        padding: 4px 0;
-        border-bottom: 1px solid gray;
+        font-size: 30px;
     }
 
     .score {
+        width: 100%;
         border-collapse: collapse;
         border-spacing: 0;
     }
 
+    .score th {
+        padding: 4px;
+    }
+
+    .score th,
+    .score td:first-child {
+        font-size: 12px;
+        font-weight: bold;
+        color: gray;
+    }
+
     .score td {
-        padding: 10px;
+        padding: 6px 4px;
         text-align: center;
     }
 
+    .score tr:not(:last-child) td {
+        border-bottom: 1px solid #ccc;
+    }
+
+    .score th:not(:last-child),
+    .score td:not(:last-child) {
+        border-right: 1px solid #ccc;
+    }
+
+    .score th {
+        border-bottom: 1px solid grey;
+    }
+
+    .score th:first-child,
+    .score td:first-child {
+        border-right: 1px solid grey;
+    }
+
+    .score td:last-child {
+        font-weight: bolder;
+        color: #bb0303;
+    }
+
+
     .score input {
         border: unset;
-        width: 50px;
+        width: 20px;
         text-align: center;
     }
 </style>

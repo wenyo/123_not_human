@@ -1,15 +1,28 @@
 const SCORE_ZERO = 0;
 const TEAM_COUNT = 5;
 const ROUND_COUNT = 5;
-let scoreAry = Array.from({ length: TEAM_COUNT }, () => {
-    return Array.from({ length: ROUND_COUNT }, () => SCORE_ZERO);
-});
+let scoreAry = scoreReset();
 
 window.onload = () => {
     const randomBtn = document.querySelector(".random-btn");
     randomBtn.addEventListener("click", topicGet);
+
+    const clearData = document.querySelector(".clear-data");
+    clearData.addEventListener("click", () => {
+        scoreFromLocalClear();
+        scoreAry = scoreReset();
+        scoreBuild();
+    });
+
+    scoreFromLocalGet();
     scoreBuild();
 };
+
+function scoreReset() {
+    return Array.from({ length: TEAM_COUNT }, () => {
+        return Array.from({ length: ROUND_COUNT }, () => SCORE_ZERO);
+    });
+}
 
 function scoreBuild() {
     scoreFormSet();
@@ -83,10 +96,19 @@ function scoreAdd(self) {
     const teamIdx = parentElement.dataset.team;
     const roundIdx = parentElement.dataset.round;
     scoreAry[teamIdx][roundIdx] = parseInt(thisScore);
+    scoreFromLocalSave();
 }
 
-function scoreFromLocalGet() {}
+function scoreFromLocalGet() {
+    const scoreAryFromLocal = localStorage.getItem("score");
+    if (!scoreAryFromLocal) return;
+    scoreAry = JSON.parse(scoreAryFromLocal);
+}
 
-function scoreFromLocalSave() {}
+function scoreFromLocalSave() {
+    localStorage.setItem("score", JSON.stringify(scoreAry));
+}
 
-function scoreFromLocalClear() {}
+function scoreFromLocalClear() {
+    localStorage.removeItem("score");
+}
